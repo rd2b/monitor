@@ -4,7 +4,7 @@ monitor
 Monitoring tool over Google app engine
 
 How-to
-======
+------
 Get latest code from googleappengine:
 ```bash
 svn checkout http://googleappengine.googlecode.com/svn/trunk/ googleappengine-read-only
@@ -21,3 +21,7 @@ Upload your code to your account:
 ```
   
   
+Use
+---
+I deploy this to : http://my-mon.appspot.com/
+
