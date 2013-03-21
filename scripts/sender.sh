@@ -9,6 +9,8 @@ quiet=false
 CONFFILE="/etc/monitor/monitor.conf"
 url="http://my-mon.appspot.com/event"
 source $CONFFILE
+source $LIBMONITOR
+
 
 reference="$HOSTNAME"
 testname="notset"
@@ -59,20 +61,5 @@ do
     esac
 done
 
-function send {
-    local testname="$1"
-    local reference="$2"
-    local level="$3"
-    local data="$4"
-
-    local timestamp="$(date +%s)"
-    local request="" 
-    
-    request="reference=$reference&test=$testname&timestamp=$timestamp"
-    request="$request&level=$mem&data=$data"
-    
-    curl "$url?$request"
-}
-
-
+send "$testname" "$reference" "$level" "$data"
 
