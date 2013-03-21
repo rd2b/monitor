@@ -11,6 +11,7 @@ hostnumber=10
 
 hostformat="myhost"
 testformat="mytest"
+testlist="cpu backup disque event logs"
 
 url="http://localhost:8080/event"
 
@@ -58,12 +59,11 @@ data="default"
 for h in $(seq 0 $hostnumber)
 do
     currenthost="$hostformat-$h.test"
-    for t in $(seq 0 $testnumber)
+    for t in $testlist
     do
-        currenttest="$testformat$t"
         timestamp="$(date +%s)"
         level="$RANDOM"
-        request="reference=$currenthost&test=$currenttest&timestamp=$timestamp"
+        request="reference=$currenthost&test=$t&timestamp=$timestamp"
         request="$request&level=$level&data=$data"
         curl "$url?$request"
     done
