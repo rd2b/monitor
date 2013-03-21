@@ -1,0 +1,6 @@
+
+
+# Send an hourly heartbeat
+* * * * *   root    /usr/local/monitor/scripts/heartbeat.sh
+# Check Memory Usage:
+* * * * *   root    /usr/local/monitor/scripts/memory.sh
