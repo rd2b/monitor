@@ -17,26 +17,62 @@ class Data(db.Model):
     timestamp = db.IntegerProperty()
     data = db.StringProperty(multiline = True)
 
+class Reference(db.Model):
+    pass
+
+class Test(db.Model):
+    pass
+
+
 class Storage:
     def __init__(self):
         pass
 
+    def gettest(self, name):
+        test = Test.get_or_insert(name)
+        return test
+
+    def getreference(self, name):
+        reference = Reference.get_or_insert( name)
+        return reference
+
+
+
     def append(self, level, test, reference, timestamp, data):
         newdata = Data()
+        mytest = self.gettest(test)
+        myreference = self.getreference(reference)
         
         newdata.level = int(level)
-        newdata.test = str(test)
-        newdata.reference = str(reference)
+        newdata.test = str(mytest.key().name())
+        newdata.reference = str(myreference.key().name())
         newdata.timestamp = int(timestamp)
         newdata.data = str(data)
 
         newdata.put()
-
-
         
     def datas(self):
         datas = Data.all()
         return datas
+
+    def tests(self):
+        tests = Test.all()
+        results = []
+        for test in tests:
+            print(test.key().name())
+            if not test.key().name() in results:
+                results.append(test.key().name())
+        return results
+
+    def references(self):
+        references = Reference.all()
+        results = []
+        for reference in references:
+            print(reference.key().name())
+            if not reference.key().name() in results:
+                results.append(reference.key().name())
+        return results
+
 
     def lastsdatas(self):
         datas = self.datas()
@@ -50,20 +86,6 @@ class Storage:
             elif  last[data.reference][data.test].timestamp < data.timestamp:
                 last[data.reference][data.test] = data
         return last
-
-    def gettests(self):
-        datas = self.datas()
-        tests = []
-        for data in datas:
-            if not data.test in tests:
-                tests.append(data.test)
-
-        return tests
-
-
-
-
-
 
 
     def __str__(self):
