@@ -35,8 +35,7 @@ class Storage:
 
         
     def datas(self):
-        datas = db.GqlQuery("Select * FROM Data "
-                "ORDER BY reference, test, timestamp")
+        datas = Data.all()
         return datas
 
     def lastsdatas(self):
@@ -51,6 +50,17 @@ class Storage:
             elif  last[data.reference][data.test].timestamp < data.timestamp:
                 last[data.reference][data.test] = data
         return last
+
+    def gettests(self):
+        datas = self.datas()
+        tests = []
+        for data in datas:
+            if not data.test in tests:
+                tests.append(data.test)
+
+        return tests
+
+
 
 
 

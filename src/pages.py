@@ -22,11 +22,16 @@ class Overview(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         mystorage = ws.storage()
         datas = mystorage.lastsdatas()
-        response="<table>"
+        tests = mystorage.gettests()
+        response="<table><tr><td>Hosts</td>"
+        for test in tests:
+            response+="<td>" + test + "</td>"
+        response+="</tr>"
+
         for reference in datas.keys():
             response+="<tr>"
             response+="<td>"+reference+"</td>"
-            for test in datas[reference].keys():
+            for test in tests:
                 if datas[reference][test]:
                     level = str(datas[reference][test].level)
                     response+="<td>" + level + "</td>"
