@@ -39,9 +39,10 @@ class Storage:
 
 
     def append(self, level, test, reference, timestamp, data):
-        newdata = Data()
         mytest = self.gettest(test)
         myreference = self.getreference(reference)
+
+        newdata = Data().get_or_insert(str(mytest.key().name()) + "/" + str(myreference.key().name()))
         
         newdata.level = int(level)
         newdata.test = str(mytest.key().name())
