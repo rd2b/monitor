@@ -11,7 +11,7 @@ url="http://my-mon.appspot.com/event"
 source $CONFFILE  
 
 testname="heartbeat"
-level="$(date +%Y%m%d%H%m)"
+level="$(date +%Y%m%d%H%M)"
 
 
 set -u
