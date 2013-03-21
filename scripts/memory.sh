@@ -3,19 +3,18 @@
 #   Filename   : populate.sh                             #
 #   Description: TODO   #
 #########################################################
+set -u
+set -e
 
 PROGNAME="$(basename $0)"
 quiet=false
-testnumber=10
-hostnumber=10
+CONFFILE="/etc/monitor/monitor.conf"                                            
+url="http://my-mon.appspot.com/event"                                           
+source $CONFFILE  
 
 testname="memory"
 
-url="http://my-mon.appspot.com/event"
 
-
-set -u
-set -e
 
 # Prints help message
 function showhelp {

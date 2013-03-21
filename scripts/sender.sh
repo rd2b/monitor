@@ -6,13 +6,15 @@
 
 PROGNAME="$(basename $0)"
 quiet=false
+CONFFILE="/etc/monitor/monitor.conf"
+url="http://my-mon.appspot.com/event"
+source $CONFFILE
 
 reference="$HOSTNAME"
 testname="notset"
 data="default"
 level="0"
 
-url="http://my-mon.appspot.com/event"
 
 
 set -u

@@ -6,11 +6,12 @@
 
 PROGNAME="$(basename $0)"
 quiet=false
+CONFFILE="/etc/monitor/monitor.conf"                                            
+url="http://my-mon.appspot.com/event"                                           
+source $CONFFILE  
 
-
-url="http://my-mon.appspot.com/event"
 testname="heartbeat"
-level="0"
+level="$(date +%Y%m%d%H%m)"
 
 
 set -u
