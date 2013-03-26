@@ -33,7 +33,7 @@ class Overview(webapp2.RequestHandler):
             response+="<tr>"
             response+="<td>"+reference+"</td>"
             for test in tests:
-                if datas[reference][test]:
+                if reference in datas and test in datas[reference]:
                     level = str(datas[reference][test].level)
                     response+="<td>" + level + "</td>"
                 else:
