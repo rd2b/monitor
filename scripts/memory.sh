@@ -59,5 +59,5 @@ level="$RANDOM"
 request="reference=$HOSTNAME&test=$testname&timestamp=$timestamp"
 request="$request&level=$mem&data=$data"
 
-curl "$url?$request"
+curl -s "$url?$request"
 
