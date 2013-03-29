@@ -54,5 +54,5 @@ timestamp="$(date +%s)"
 request="reference=$HOSTNAME&test=$testname&timestamp=$timestamp"
 request="$request&level=$level&data=$data"
 
-curl -s "$url?$request"
+curl -s "$url?$request" > /dev/null
 
