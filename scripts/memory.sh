@@ -49,8 +49,8 @@ done
 
 data="default"
 
-memtotal=$(sed -n "s/MemTotal: \(.*\) kB/\1/p" /proc/meminfo)
-memfree=$(sed -n "s/MemFree: \(.*\) kB/\1/p" /proc/meminfo)
+memtotal=$(/bin/sed -n "s/MemTotal: \(.*\) kB/\1/p" /proc/meminfo)
+memfree=$(/bin/sed -n "s/MemFree: \(.*\) kB/\1/p" /proc/meminfo)
 mem=$((100*($memtotal-$memfree)/$memtotal))
 
 
@@ -59,5 +59,5 @@ level="$RANDOM"
 request="reference=$HOSTNAME&test=$testname&timestamp=$timestamp"
 request="$request&level=$mem&data=$data"
 
-curl -s "$url?$request" > /dev/null
+/usr/bin/curl -s "$url?$request" > /dev/null
 
