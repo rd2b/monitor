@@ -60,5 +60,5 @@ level="$RANDOM"
 request="reference=$HOSTNAME&test=$testname&timestamp=$timestamp"
 request="$request&level=$mem&data=$data"
 
-/usr/bin/curl -s "$url?$request" > /dev/null
+/usr/bin/curl -4 -s "$url?$request" > /dev/null
 

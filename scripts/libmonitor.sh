@@ -33,7 +33,7 @@ function send {
     request="reference=$reference&test=$testname&timestamp=$timestamp"
     request="$request&level=$level&data=$data"
     
-    curl -s "$url?$request"
+    curl -4 -s "$url?$request"
 }
 
 
