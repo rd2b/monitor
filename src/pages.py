@@ -37,7 +37,7 @@ class Overview(webapp2.RequestHandler):
                     level = str(datas[reference][test].level)
                     response+="<td>" + level + "</td>"
                 else:
-                    response+="<td>X</td>"
+                    response+="<td></td>"
             response+="</tr>"
         response+="</table>"
 
