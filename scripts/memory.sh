@@ -51,7 +51,8 @@ data="default"
 
 memtotal=$(/bin/sed -n "s/MemTotal: \(.*\) kB/\1/p" /proc/meminfo)
 memfree=$(/bin/sed -n "s/MemFree: \(.*\) kB/\1/p" /proc/meminfo)
-mem=$((100*($memtotal-$memfree)/$memtotal))
+cached=$(/bin/sed -n "s/^Cached: \(.*\) kB/\1/p" /proc/meminfo)
+mem=$((100*($memtotal-$memfree-$cached)/$memtotal))
 
 
 timestamp="$(date +%s)"
